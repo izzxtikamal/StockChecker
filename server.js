@@ -7,9 +7,20 @@ const cors        = require('cors');
 const apiRoutes         = require('./routes/api.js');
 const fccTestingRoutes  = require('./routes/fcctesting.js');
 const runner            = require('./test-runner');
+const helmet = require("helmet");
 require("./db-connection");
 
 const app = express();
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"], // Allow resources to be loaded from the same origin
+      scriptSrc: ["'self'"],  // Allow scripts to be loaded from the same origin
+      styleSrc: ["'self'"],   // Allow stylesheets to be loaded from the same origin
+    },
+  })
+);
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
