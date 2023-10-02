@@ -4,7 +4,6 @@ const assert = chai.assert;
 const server = require('../server');
 
 chai.use(chaiHttp);
-
 //Viewing one stock: GET request to /api/stock-prices/
 //Viewing one stock and liking it: GET request to /api/stock-prices/
 //Viewing the same stock and liking it again: GET request to /api/stock-prices/
